@@ -5,8 +5,6 @@ import TabBar from "./components/TabBar";
 import MapContainer from "./components/MapContainer";
 
 function App() {
-  // https://run.mocky.io/v3/26fef364-f011-4e5d-8f00-7928c3409504
-
   const [cities, setCities] = useState([]);
   const [searchTabs, setSearchTabs] = useState([]);
   const [searchResults, setSearchResults] = useState();
