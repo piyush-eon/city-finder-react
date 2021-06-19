@@ -1,0 +1,34 @@
+.tab {
+  display: flex;
+  align-items: center;
+  background-color: #3273f6;
+  margin: 5px;
+  color: white;
+  border-radius: 5px;
+  padding: 0 10px;
+
+  &__radio {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 8px;
+
+    &--select {
+      width: 19px;
+      height: 19px;
+      border: 5px solid white;
+      background-color: #3273f6;
+    }
+  }
+
+  &__city {
+    margin-bottom: 2px;
+  }
+
+  &__x {
+    cursor: pointer;
+    margin-left: 30px;
+  }
+}

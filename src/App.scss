@@ -1,0 +1,45 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  background-color: #3273f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  height: 450px;
+
+  &__input {
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    height: 60px;
+    margin-bottom: 10px;
+    display: flex;
+
+    &--search {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 20px;
+      width: 100%;
+    }
+    &--search:focus {
+      outline: none;
+    }
+  }
+
+  &__mapbox {
+    border-radius: 5px;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
