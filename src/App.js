@@ -1,8 +1,8 @@
 import "./App.scss";
-import ReactMapGL, { FlyToInterpolator } from "react-map-gl";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TabBar from "./components/TabBar";
+import MapContainer from "./components/MapContainer";
 
 function App() {
   // https://run.mocky.io/v3/26fef364-f011-4e5d-8f00-7928c3409504
@@ -40,8 +40,6 @@ function App() {
   };
 
   const SearchTabHandler = (res) => {
-    console.log(res, searchTabs);
-
     if (searchTabs.some((tab) => tab.lat.toFixed(1) === res.lat.toFixed(1)))
       return;
 
@@ -51,7 +49,7 @@ function App() {
       longitude: res.lng,
     });
 
-    setSearchTabs([...searchTabs.slice(-1), res]);
+    setSearchTabs([...searchTabs.slice(-2), res]);
   };
 
   useEffect(() => {
@@ -81,45 +79,13 @@ function App() {
             }}
           />
         </div>
-        <div className="container__mapbox">
-          <ReactMapGL
-            className="container__map--map"
-            {...viewport}
-            mapboxApiAccessToken={process.env.REACT_APP_API_KEY}
-            onViewportChange={(viewport) =>
-              setViewport({
-                ...viewport,
-                transitionDuration: 1500,
-                transitionInterpolator: new FlyToInterpolator(),
-              })
-            }
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                borderRadius: 20,
-                boxShadow: "0px -5px 20px black",
-              }}
-            >
-              {searchResults?.slice(0, 4).map((res) => {
-                return (
-                  <span
-                    key={res.city}
-                    style={{
-                      padding: 10,
-                      backgroundColor: "white",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => SearchTabHandler(res)}
-                  >
-                    {res.city}
-                  </span>
-                );
-              })}
-            </div>
-          </ReactMapGL>
-        </div>
+        <MapContainer
+          searchResults={searchResults}
+          SearchTabHandler={SearchTabHandler}
+          viewport={viewport}
+          setViewport={setViewport}
+          searchTabs={searchTabs}
+        />
       </div>
     </div>
   );
